@@ -1,0 +1,19 @@
+---
+- name: Check Ping Response
+  hosts: all
+  gather_facts: no
+  tasks:
+   - name: Ping qagpublic.ndcad.nic.in
+     ansible.builtin.ping:
+      data: "qagpublic.ndcad.nic.in"
+     register: ping_result
+
+   - name: Display ping response
+     debug:
+      msg: "Host qagpublic.ndcad.nic.in is {{ 'reachable' if ping_result.ping else 'unreachable' }}"
+     when: ping_result is defined
+
+   - name: Display ping failure
+     debug:
+      msg: "Ping to qagpublic.ndcad.nic.in failed"
+     when: ping_result is undefined
