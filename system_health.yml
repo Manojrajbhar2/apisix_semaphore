@@ -1,0 +1,19 @@
+---
+- hosts: all
+  gather_facts: true
+  tasks:
+  - name: Gather system information
+    debug:
+     msg:
+      - "CPU: {{ ansible_processor }}"
+      - "RAM: {{ ansible_memory_mb.real.total }} MB"
+      - "MemFree: {{ ansible_memory_mb.real.free }} MB"
+      - "MemUsed: {{ ansible_memory_mb.real.used }} MB"
+      - "SwapFree: {{ ansible_memory_mb.swap.free }} MB"
+      - "SwapTotal: {{ ansible_memory_mb.swap.total }} MB"
+      - "TYPE: {{ ansible_os_family }}"
+      - "MAC_ADD: {{ ansible_facts['ansible_default_ipv4']['macaddress'] | default('N/A') }}"
+      - "NETMASK: {{ ansible_facts['ansible_default_ipv4']['netmask'] | default('N/A') }}"
+      - "OS: {{ ansible_distribution }}"
+      - "OS_VERSION: {{ ansible_distribution_version }}"
+      - "KERNEL_VERSION: {{ ansible_kernel }}"
