@@ -1,0 +1,12 @@
+---
+- name: Run df -h command
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Execute df -h
+      command: df -h
+      register: df_output
+
+    - name: Display df -h output
+      debug:
+        var: stdout_lines
