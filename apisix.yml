@@ -1,7 +1,6 @@
 ---
 - name: Run Newman with Postman Collection
   hosts: all
-  become: yes
   become_user: ansibleuser
   tasks:
     - name: Run Newman
