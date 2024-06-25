@@ -1,8 +1,6 @@
 ---
 - name: Run Newman with Postman Collection
   hosts: all
-  become: yes
-  become_user: root
   tasks:
     - name: Run Newman
       command: newman run /home/user/Downloads/posman_shiksh.json
