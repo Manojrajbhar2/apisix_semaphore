@@ -1,0 +1,10 @@
+---
+- name: Run Newman with Postman Collection
+  hosts: localhost
+  become: yes
+  become_user: ansibleuser
+  tasks:
+    - name: Run Newman
+      command: newman run /home/user/Downloads/posman_shiksh.json
+      args:
+        chdir: /home/user/Downloads
